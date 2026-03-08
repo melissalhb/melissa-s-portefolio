@@ -61,7 +61,7 @@ const Contact = () => {
           >
             <MagneticButton>
               <a
-                href="mailto:melissa@efrei.net"
+                href="mailto:melissa.lacheb@efrei.net"
                 className="inline-flex items-center gap-2 bg-foreground text-background px-8 py-4 rounded-full font-bold hover:scale-105 transition-transform"
               >
                 <Mail className="w-4 h-4" />
@@ -71,7 +71,7 @@ const Contact = () => {
             </MagneticButton>
             <MagneticButton>
               <a
-                href="https://www.linkedin.com/in/melissa/"
+                href="https://www.linkedin.com/in/melissa-lacheb/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-lavender/15 hover:bg-lavender/25 transition text-foreground"
@@ -81,7 +81,7 @@ const Contact = () => {
             </MagneticButton>
             <MagneticButton>
               <a
-                href="https://github.com/yourgithub"
+                href="https://github.com/melissalhb"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-coral/15 hover:bg-coral/25 transition text-foreground"
