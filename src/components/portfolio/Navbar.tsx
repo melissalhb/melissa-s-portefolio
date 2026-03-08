@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { Menu, X } from "lucide-react";
 
 const links = [
   { label: "Skills", href: "#skills" },
@@ -11,6 +12,7 @@ const links = [
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 50);
@@ -24,25 +26,57 @@ const Navbar = () => {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all ${
-        scrolled ? "bg-background/80 backdrop-blur-md border-b border-border" : ""
+        scrolled ? "bg-background/80 backdrop-blur-xl border-b border-foreground/5" : ""
       }`}
     >
       <div className="section-container flex items-center justify-between h-16">
-        <a href="#" className="font-display font-bold text-lg">
-          M<span className="text-primary">.</span>
+        <a href="#" className="font-display font-extrabold text-2xl">
+          M<span className="text-coral">.</span>
         </a>
-        <div className="hidden md:flex items-center gap-8">
+
+        {/* Desktop */}
+        <div className="hidden md:flex items-center gap-1">
           {links.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="text-sm text-muted-foreground hover:text-primary transition font-medium"
+              className="px-4 py-2 rounded-full text-sm font-bold text-muted-foreground hover:text-foreground hover:bg-foreground/5 transition-all"
             >
               {link.label}
             </a>
           ))}
         </div>
+
+        {/* Mobile toggle */}
+        <button
+          onClick={() => setMobileOpen(!mobileOpen)}
+          className="md:hidden p-2 rounded-full hover:bg-foreground/5 transition"
+        >
+          {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+        </button>
       </div>
+
+      {/* Mobile menu */}
+      {mobileOpen && (
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="md:hidden bg-background/95 backdrop-blur-xl border-b border-foreground/5 pb-4"
+        >
+          <div className="section-container flex flex-col gap-1">
+            {links.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={() => setMobileOpen(false)}
+                className="px-4 py-3 rounded-xl text-sm font-bold text-muted-foreground hover:text-foreground hover:bg-foreground/5 transition-all"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+        </motion.div>
+      )}
     </motion.nav>
   );
 };
