@@ -6,28 +6,57 @@ const skillCategories = [
     emoji: "💻",
     color: "bg-coral/10 border-coral/20",
     tagColor: "bg-coral/15 text-coral",
-    skills: ["C#", "Python", "JavaScript", "SQL", "Java", "C", "HTML/CSS"],
+    skills: [
+      { name: "C#", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" },
+      { name: "Python", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
+      { name: "JavaScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
+      { name: "SQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" },
+      { name: "Java", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" },
+      { name: "C", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" },
+      { name: "HTML/CSS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
+    ],
   },
   {
     title: "Frameworks",
     emoji: "⚡",
     color: "bg-lavender/10 border-lavender/20",
     tagColor: "bg-lavender/15 text-lavender",
-    skills: [".NET Core", "React.js", "Node.js", "Vue.js", "Vite", "NumPy", "Pandas"],
+    skills: [
+      { name: ".NET Core", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dotnetcore/dotnetcore-original.svg" },
+      { name: "React.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+      { name: "Node.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
+      { name: "Vue.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" },
+      { name: "Vite", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg" },
+      { name: "NumPy", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" },
+      { name: "Pandas", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" },
+    ],
   },
   {
     title: "Tools & DevOps",
     emoji: "🛠️",
     color: "bg-mint/10 border-mint/20",
     tagColor: "bg-mint/15 text-mint",
-    skills: ["Git", "Docker", "Azure", "REST APIs", "CI/CD", "xUnit", "NUnit"],
+    skills: [
+      { name: "Git", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
+      { name: "Docker", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
+      { name: "Azure", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg" },
+      { name: "REST APIs", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" },
+      { name: "CI/CD", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/githubactions/githubactions-original.svg" },
+      { name: "xUnit", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dotnetcore/dotnetcore-original.svg" },
+      { name: "NUnit", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dotnetcore/dotnetcore-original.svg" },
+    ],
   },
   {
     title: "Methods",
     emoji: "🎯",
     color: "bg-sunny/10 border-sunny/20",
     tagColor: "bg-sunny/20 text-foreground",
-    skills: ["Agile/Scrum", "Clean Architecture", "SOLID", "Design Patterns"],
+    skills: [
+      { name: "Agile/Scrum", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jira/jira-original.svg" },
+      { name: "Clean Architecture" },
+      { name: "SOLID" },
+      { name: "Design Patterns" },
+    ],
   },
 ];
 
@@ -41,7 +70,7 @@ const Skills = () => {
           viewport={{ once: true }}
         >
           <span className="font-mono text-sm text-coral font-bold tracking-widest uppercase">(01)</span>
-          <h2 className="font-display text-4xl md:text-5xl font-extrabold mt-2 mb-4">
+          <h2 className="font-display text-5xl md:text-6xl font-extrabold mt-2 mb-4 tracking-wide">
             What I Do<span className="text-lavender">/</span>
           </h2>
           <p className="text-muted-foreground max-w-xl mb-12">
@@ -60,14 +89,17 @@ const Skills = () => {
               className={`bento-card border-2 ${cat.color}`}
             >
               <div className="text-3xl mb-3">{cat.emoji}</div>
-              <h3 className="font-display font-bold text-xl mb-4">{cat.title}</h3>
+              <h3 className="font-display font-bold text-2xl mb-4 tracking-wide">{cat.title}</h3>
               <div className="flex flex-wrap gap-2">
                 {cat.skills.map((skill) => (
                   <span
-                    key={skill}
-                    className={`px-3 py-1.5 rounded-full text-xs font-mono font-bold ${cat.tagColor}`}
+                    key={skill.name}
+                    className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-mono font-bold ${cat.tagColor}`}
                   >
-                    {skill}
+                    {skill.icon && (
+                      <img src={skill.icon} alt={skill.name} className="w-4 h-4" />
+                    )}
+                    {skill.name}
                   </span>
                 ))}
               </div>
