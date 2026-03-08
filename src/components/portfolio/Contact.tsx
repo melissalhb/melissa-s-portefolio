@@ -5,7 +5,7 @@ import MagneticButton from "./MagneticButton";
 
 const Contact = () => {
   return (
-    <section id="contact" className="py-24 relative overflow-hidden">
+    <section id="contact" className="py-24 pb-32 relative">
       {/* Animated blobs */}
       <motion.div
         animate={{ y: [0, -20, 0], x: [0, 10, 0] }}
