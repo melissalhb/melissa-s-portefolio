@@ -101,7 +101,7 @@ export const LineReveal = ({
   delay?: number;
   direction?: "up" | "left";
 }) => (
-  <div className={`overflow-hidden ${className}`}>
+  <div className={`overflow-hidden pb-[0.15em] -mb-[0.15em] ${className}`}>
     <motion.div
       initial={{ y: direction === "up" ? "100%" : 0, x: direction === "left" ? "-100%" : 0, opacity: 0 }}
       whileInView={{ y: 0, x: 0, opacity: 1 }}
