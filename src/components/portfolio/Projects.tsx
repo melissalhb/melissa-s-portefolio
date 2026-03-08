@@ -1,19 +1,25 @@
 import { motion } from "framer-motion";
-import { ExternalLink, FolderGit2 } from "lucide-react";
+import { ArrowUpRight, FolderGit2 } from "lucide-react";
 
 const projects = [
   {
-    title: "Behavia — AI Immersive Platform",
+    title: "Behavia",
+    subtitle: "AI Immersive Platform",
     year: "2024",
+    color: "from-coral/20 to-lavender/20",
+    accentColor: "text-coral",
     description:
-      "Full-stack learning platform featuring a 3D avatar with adaptive human-AI feedback. Built with the MERN stack following Clean Architecture principles.",
+      "Full-stack learning platform with a 3D avatar featuring adaptive human-AI feedback. Built with MERN stack + Clean Architecture + Docker.",
     tags: ["React", "Node.js", "MongoDB", "Docker", "REST API"],
   },
   {
-    title: "Metro Efrei Dodo — Pathfinding",
+    title: "Metro Efrei Dodo",
+    subtitle: "Pathfinding Algorithm",
     year: "2025",
+    color: "from-mint/20 to-sky/20",
+    accentColor: "text-mint",
     description:
-      "Shortest-path calculator for the Paris Metro using Dijkstra's algorithm and NetworkX. Processes 2024 IDFM open data with NumPy/Pandas for real-time visualization.",
+      "Shortest-path calculator for the Paris Metro using Dijkstra's algorithm. Processes 2024 IDFM open data for real-time visualization.",
     tags: ["Python", "Dijkstra", "NumPy", "Pandas", "Matplotlib"],
   },
 ];
@@ -26,13 +32,13 @@ const Projects = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
         >
-          <h2 className="font-mono text-primary text-sm tracking-widest uppercase mb-2">
-            Projects
+          <span className="font-mono text-sm text-mint font-bold tracking-widest uppercase">(03)</span>
+          <h2 className="font-display text-4xl md:text-5xl font-extrabold mt-2 mb-4">
+            Selected Works<span className="text-sunny">/</span>
           </h2>
-          <p className="font-display text-3xl md:text-4xl font-bold mb-12">
-            Things I've built
+          <p className="text-muted-foreground max-w-xl mb-12">
+            Thoughtfully crafted projects that blend utility and aesthetics.
           </p>
         </motion.div>
 
@@ -40,27 +46,30 @@ const Projects = () => {
           {projects.map((project, i) => (
             <motion.div
               key={project.title}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.15 }}
-              className="group bg-card rounded-xl p-6 border border-border hover:border-primary/30 transition-all hover:shadow-[var(--shadow-card)]"
+              transition={{ delay: i * 0.15 }}
+              className={`group bento-card bg-gradient-to-br ${project.color} cursor-pointer`}
             >
-              <div className="flex items-center justify-between mb-4">
-                <FolderGit2 className="w-8 h-8 text-primary" />
-                <span className="font-mono text-sm text-muted-foreground">{project.year}</span>
+              <div className="flex items-center justify-between mb-6">
+                <FolderGit2 className={`w-10 h-10 ${project.accentColor}`} />
+                <div className="flex items-center gap-2">
+                  <span className="font-mono text-xs text-muted-foreground">{project.year}</span>
+                  <ArrowUpRight className="w-5 h-5 text-muted-foreground group-hover:text-foreground group-hover:-translate-y-1 group-hover:translate-x-1 transition-all" />
+                </div>
               </div>
-              <h3 className="font-display font-semibold text-xl mb-2 group-hover:text-primary transition-colors">
-                {project.title}
-              </h3>
-              <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+
+              <h3 className="font-display font-extrabold text-2xl mb-1">{project.title}</h3>
+              <p className={`font-mono text-sm ${project.accentColor} mb-3`}>{project.subtitle}</p>
+              <p className="text-muted-foreground text-sm leading-relaxed mb-6">
                 {project.description}
               </p>
               <div className="flex flex-wrap gap-2">
                 {project.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="bg-secondary text-secondary-foreground px-2.5 py-1 rounded text-xs font-mono"
+                    className="bg-foreground/5 text-foreground/70 px-3 py-1 rounded-full text-xs font-mono font-bold"
                   >
                     {tag}
                   </span>

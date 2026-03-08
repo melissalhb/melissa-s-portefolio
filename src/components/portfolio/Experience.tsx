@@ -1,32 +1,37 @@
 import { motion } from "framer-motion";
-import { Briefcase } from "lucide-react";
 
 const experiences = [
   {
     title: "R&D Software Engineer Apprentice",
     company: "Société Générale",
     period: "Sept. 2024 — Present",
+    color: "border-coral bg-coral/5",
+    dotColor: "bg-coral",
     bullets: [
-      "Engineered a high-performance data validation tool in C#/.NET, ensuring 100% data integrity for critical financial flows.",
-      "Developed a large-scale data converter to process massive datasets, improving interoperability between legacy and modern systems.",
-      "Automated QA workflows by creating end-to-end file processing scripts, reducing manual validation time.",
-      "Enforced software quality standards through Unit Tests and code reviews.",
+      "Engineered a high-performance data validation tool in C#/.NET ensuring 100% data integrity for critical financial flows",
+      "Developed a large-scale data converter processing massive datasets for legacy ↔ modern system interop",
+      "Automated QA workflows with end-to-end file processing scripts",
+      "Enforced quality through Unit Tests (xUnit/NUnit) and code reviews",
     ],
   },
   {
-    title: "Private Tutor — Mathematics & Science",
+    title: "Private Tutor — Math & Science",
     company: "Independent",
     period: "2015 — Present",
+    color: "border-lavender bg-lavender/5",
+    dotColor: "bg-lavender",
     bullets: [
-      "Mentored 10+ students, improving average grades by +15% through personalized learning frameworks.",
+      "Mentored 10+ students with personalized frameworks, improving average grades by +15%",
     ],
   },
   {
     title: "Sales Associate",
     company: "Histoire d'Or",
     period: "Dec. 2022 — Jan. 2023",
+    color: "border-sunny bg-sunny/5",
+    dotColor: "bg-sunny",
     bullets: [
-      "Achieved high-value sales (up to €3,000) in a fast-paced, high-pressure retail environment.",
+      "Achieved high-value sales (up to €3,000) in a fast-paced luxury retail environment",
     ],
   },
 ];
@@ -39,39 +44,37 @@ const Experience = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
         >
-          <h2 className="font-mono text-primary text-sm tracking-widest uppercase mb-2">
-            Experience
+          <span className="font-mono text-sm text-lavender font-bold tracking-widest uppercase">(02)</span>
+          <h2 className="font-display text-4xl md:text-5xl font-extrabold mt-2 mb-12">
+            Experience<span className="text-coral">/</span>
           </h2>
-          <p className="font-display text-3xl md:text-4xl font-bold mb-12">
-            Where I've worked
-          </p>
         </motion.div>
 
-        <div className="space-y-8">
+        <div className="space-y-6">
           {experiences.map((exp, i) => (
             <motion.div
               key={exp.title}
-              initial={{ opacity: 0, x: -20 }}
+              initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="relative pl-8 border-l-2 border-border hover:border-primary/50 transition-colors"
+              transition={{ delay: i * 0.1 }}
+              className={`bento-card border-l-4 ${exp.color} rounded-l-lg`}
             >
-              <div className="absolute -left-[11px] top-1 w-5 h-5 rounded-full bg-background border-2 border-primary flex items-center justify-center">
-                <Briefcase className="w-2.5 h-2.5 text-primary" />
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-3">
+                <div className="flex items-center gap-3">
+                  <span className={`w-3 h-3 rounded-full ${exp.dotColor}`} />
+                  <h3 className="font-display font-bold text-lg">
+                    {exp.title}
+                  </h3>
+                </div>
+                <span className="font-mono text-xs text-muted-foreground mt-1 md:mt-0">{exp.period}</span>
               </div>
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
-                <h3 className="font-display font-semibold text-lg">
-                  {exp.title} — <span className="text-primary">{exp.company}</span>
-                </h3>
-                <span className="font-mono text-sm text-muted-foreground">{exp.period}</span>
-              </div>
-              <ul className="space-y-1.5">
+              <p className="font-bold text-sm text-muted-foreground mb-3 ml-6">{exp.company}</p>
+              <ul className="space-y-2 ml-6">
                 {exp.bullets.map((b, j) => (
                   <li key={j} className="text-muted-foreground text-sm leading-relaxed flex gap-2">
-                    <span className="text-primary mt-1.5 shrink-0">▸</span>
+                    <span className="text-coral shrink-0">→</span>
                     {b}
                   </li>
                 ))}
