@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, ArrowUpRight } from "lucide-react";
+import { Github, Linkedin, Mail, ArrowUpRight, Download } from "lucide-react";
 import heroShapes from "@/assets/hero-shapes.png";
 import { CharReveal, LineReveal } from "./TextReveal";
 import MagneticButton from "./MagneticButton";
