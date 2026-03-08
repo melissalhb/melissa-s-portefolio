@@ -65,7 +65,7 @@ export const CharReveal = ({
       className={`inline-block ${className}`}
     >
       {chars.map((char, i) => (
-        <span key={i} className="overflow-hidden inline-block">
+        <span key={i} className="overflow-hidden inline-block pb-[0.15em] -mb-[0.15em]">
           <motion.span
             className="inline-block"
             variants={{
