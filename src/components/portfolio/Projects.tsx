@@ -12,6 +12,7 @@ const projects = [
     description:
       "Full-stack learning platform with a 3D avatar featuring adaptive human-AI feedback. Built with MERN stack + Clean Architecture + Docker.",
     tags: ["React", "Node.js", "MongoDB", "Docker", "REST API"],
+    link: "#",
   },
   {
     title: "Metro Efrei Dodo",
@@ -22,6 +23,7 @@ const projects = [
     description:
       "Shortest-path calculator for the Paris Metro using Dijkstra's algorithm. Processes 2024 IDFM open data for real-time visualization.",
     tags: ["Python", "Dijkstra", "NumPy", "Pandas", "Matplotlib"],
+    link: "#",
   },
 ];
 
