@@ -12,8 +12,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ["Bebas Neue", "sans-serif"],
-        body: ["Outfit", "sans-serif"],
+        display: ["Urbanist", "sans-serif"],
+        body: ["Urbanist", "sans-serif"],
         mono: ["Space Mono", "monospace"],
       },
       colors: {
