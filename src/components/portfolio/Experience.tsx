@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { CharReveal, LineReveal, StaggerContainer, StaggerItem } from "./TextReveal";
 
 const experiences = [
   {
@@ -40,48 +41,44 @@ const Experience = () => {
   return (
     <section id="experience" className="py-24">
       <div className="section-container">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          <span className="font-mono text-sm text-lavender font-bold tracking-widest uppercase">(02)</span>
+        <div>
+          <LineReveal>
+            <span className="font-mono text-sm text-lavender font-bold tracking-widest uppercase">(02)</span>
+          </LineReveal>
           <h2 className="font-display text-4xl md:text-5xl font-extrabold mt-2 mb-12">
-            Experience<span className="text-coral">/</span>
+            <CharReveal delay={0.1}>Experience</CharReveal>
+            <span className="text-coral">/</span>
           </h2>
-        </motion.div>
-
-        <div className="space-y-6">
-          {experiences.map((exp, i) => (
-            <motion.div
-              key={exp.title}
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className={`bento-card border-l-4 ${exp.color} rounded-l-lg`}
-            >
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-3">
-                <div className="flex items-center gap-3">
-                  <span className={`w-3 h-3 rounded-full ${exp.dotColor}`} />
-                  <h3 className="font-display font-bold text-lg">
-                    {exp.title}
-                  </h3>
-                </div>
-                <span className="font-mono text-xs text-muted-foreground mt-1 md:mt-0">{exp.period}</span>
-              </div>
-              <p className="font-bold text-sm text-muted-foreground mb-3 ml-6">{exp.company}</p>
-              <ul className="space-y-2 ml-6">
-                {exp.bullets.map((b, j) => (
-                  <li key={j} className="text-muted-foreground text-sm leading-relaxed flex gap-2">
-                    <span className="text-coral shrink-0">→</span>
-                    {b}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          ))}
         </div>
+
+        <StaggerContainer className="space-y-6" staggerDelay={0.15}>
+          {experiences.map((exp) => (
+            <StaggerItem key={exp.title}>
+              <div className={`bento-card border-l-4 ${exp.color} rounded-l-lg`}>
+                <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-3">
+                  <div className="flex items-center gap-3">
+                    <motion.span
+                      animate={{ scale: [1, 1.3, 1] }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                      className={`w-3 h-3 rounded-full ${exp.dotColor}`}
+                    />
+                    <h3 className="font-display font-bold text-lg">{exp.title}</h3>
+                  </div>
+                  <span className="font-mono text-xs text-muted-foreground mt-1 md:mt-0">{exp.period}</span>
+                </div>
+                <p className="font-bold text-sm text-muted-foreground mb-3 ml-6">{exp.company}</p>
+                <ul className="space-y-2 ml-6">
+                  {exp.bullets.map((b, j) => (
+                    <li key={j} className="text-muted-foreground text-sm leading-relaxed flex gap-2">
+                      <span className="text-coral shrink-0">→</span>
+                      {b}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </StaggerItem>
+          ))}
+        </StaggerContainer>
       </div>
     </section>
   );

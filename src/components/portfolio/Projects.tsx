@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight, FolderGit2 } from "lucide-react";
+import { CharReveal, LineReveal, StaggerContainer, StaggerItem } from "./TextReveal";
 
 const projects = [
   {
@@ -28,56 +29,54 @@ const Projects = () => {
   return (
     <section id="projects" className="py-24">
       <div className="section-container">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          <span className="font-mono text-sm text-mint font-bold tracking-widest uppercase">(03)</span>
+        <div>
+          <LineReveal>
+            <span className="font-mono text-sm text-mint font-bold tracking-widest uppercase">(03)</span>
+          </LineReveal>
           <h2 className="font-display text-4xl md:text-5xl font-extrabold mt-2 mb-4">
-            Selected Works<span className="text-sunny">/</span>
+            <CharReveal delay={0.1}>Selected Works</CharReveal>
+            <span className="text-sunny">/</span>
           </h2>
-          <p className="text-muted-foreground max-w-xl mb-12">
-            Thoughtfully crafted projects that blend utility and aesthetics.
-          </p>
-        </motion.div>
-
-        <div className="grid md:grid-cols-2 gap-6">
-          {projects.map((project, i) => (
-            <motion.div
-              key={project.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.15 }}
-              className={`group bento-card bg-gradient-to-br ${project.color} cursor-pointer`}
-            >
-              <div className="flex items-center justify-between mb-6">
-                <FolderGit2 className={`w-10 h-10 ${project.accentColor}`} />
-                <div className="flex items-center gap-2">
-                  <span className="font-mono text-xs text-muted-foreground">{project.year}</span>
-                  <ArrowUpRight className="w-5 h-5 text-muted-foreground group-hover:text-foreground group-hover:-translate-y-1 group-hover:translate-x-1 transition-all" />
-                </div>
-              </div>
-
-              <h3 className="font-display font-extrabold text-2xl mb-1">{project.title}</h3>
-              <p className={`font-mono text-sm ${project.accentColor} mb-3`}>{project.subtitle}</p>
-              <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-                {project.description}
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {project.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="bg-foreground/5 text-foreground/70 px-3 py-1 rounded-full text-xs font-mono font-bold"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-          ))}
+          <LineReveal delay={0.3}>
+            <p className="text-muted-foreground max-w-xl mb-12">
+              Thoughtfully crafted projects that blend utility and aesthetics.
+            </p>
+          </LineReveal>
         </div>
+
+        <StaggerContainer className="grid md:grid-cols-2 gap-6" staggerDelay={0.2}>
+          {projects.map((project) => (
+            <StaggerItem key={project.title}>
+              <motion.div
+                whileHover={{ y: -8, transition: { duration: 0.3 } }}
+                className={`group bento-card bg-gradient-to-br ${project.color} cursor-pointer`}
+              >
+                <div className="flex items-center justify-between mb-6">
+                  <FolderGit2 className={`w-10 h-10 ${project.accentColor}`} />
+                  <div className="flex items-center gap-2">
+                    <span className="font-mono text-xs text-muted-foreground">{project.year}</span>
+                    <ArrowUpRight className="w-5 h-5 text-muted-foreground group-hover:text-foreground group-hover:-translate-y-1 group-hover:translate-x-1 transition-all" />
+                  </div>
+                </div>
+
+                <h3 className="font-display font-extrabold text-2xl mb-1">{project.title}</h3>
+                <p className={`font-mono text-sm ${project.accentColor} mb-3`}>{project.subtitle}</p>
+                <p className="text-muted-foreground text-sm leading-relaxed mb-6">{project.description}</p>
+                <div className="flex flex-wrap gap-2">
+                  {project.tags.map((tag) => (
+                    <motion.span
+                      key={tag}
+                      whileHover={{ scale: 1.1 }}
+                      className="bg-foreground/5 text-foreground/70 px-3 py-1 rounded-full text-xs font-mono font-bold"
+                    >
+                      {tag}
+                    </motion.span>
+                  ))}
+                </div>
+              </motion.div>
+            </StaggerItem>
+          ))}
+        </StaggerContainer>
       </div>
     </section>
   );
