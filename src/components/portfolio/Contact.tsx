@@ -10,12 +10,12 @@ const Contact = () => {
       <motion.div
         animate={{ y: [0, -20, 0], x: [0, 10, 0] }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="color-blob w-[400px] h-[400px] bg-coral bottom-10 right-10"
+        className="color-blob w-[400px] h-[400px] bg-coral bottom-28 right-28"
       />
       <motion.div
         animate={{ y: [0, 15, 0], x: [0, -15, 0] }}
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-        className="color-blob w-[300px] h-[300px] bg-lavender top-20 left-20"
+        className="color-blob w-[300px] h-[300px] bg-lavender top-28 left-28"
       />
 
       <div className="section-container relative z-10 text-center">
