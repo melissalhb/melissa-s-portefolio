@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, ArrowUpRight } from "lucide-react";
+import { Github, Linkedin, Mail, ArrowUpRight, Download } from "lucide-react";
 import heroShapes from "@/assets/hero-shapes.png";
 import { CharReveal, LineReveal } from "./TextReveal";
 import MagneticButton from "./MagneticButton";
@@ -81,6 +81,16 @@ const Hero = () => {
                 <Mail className="w-4 h-4" />
                 Contact me
                 <ArrowUpRight className="w-4 h-4" />
+              </a>
+            </MagneticButton>
+            <MagneticButton>
+              <a
+                href="/resume.pdf"
+                download
+                className="inline-flex items-center gap-2 border-2 border-foreground/15 text-foreground px-6 py-3.5 rounded-full font-bold text-sm hover:border-coral hover:bg-coral/10 hover:scale-105 transition-all"
+              >
+                <Download className="w-4 h-4" />
+                Resume
               </a>
             </MagneticButton>
             <MagneticButton>

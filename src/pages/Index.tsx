@@ -9,11 +9,18 @@ import Projects from "@/components/portfolio/Projects";
 import Education from "@/components/portfolio/Education";
 import Contact from "@/components/portfolio/Contact";
 import LoadingScreen from "@/components/portfolio/LoadingScreen";
+import ScrollToTop from "@/components/portfolio/ScrollToTop";
 
 const Index = () => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(() => {
+    if (typeof window !== "undefined" && sessionStorage.getItem("visited")) {
+      return false;
+    }
+    return true;
+  });
 
   const handleLoadingComplete = useCallback(() => {
+    sessionStorage.setItem("visited", "1");
     setLoading(false);
   }, []);
 
@@ -33,6 +40,7 @@ const Index = () => {
           <Projects />
           <Education />
           <Contact />
+          <ScrollToTop />
         </>
       )}
     </div>

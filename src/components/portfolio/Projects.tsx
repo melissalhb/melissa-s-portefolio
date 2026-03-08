@@ -12,6 +12,7 @@ const projects = [
     description:
       "Full-stack learning platform with a 3D avatar featuring adaptive human-AI feedback. Built with MERN stack + Clean Architecture + Docker.",
     tags: ["React", "Node.js", "MongoDB", "Docker", "REST API"],
+    link: "#",
   },
   {
     title: "Metro Efrei Dodo",
@@ -22,6 +23,7 @@ const projects = [
     description:
       "Shortest-path calculator for the Paris Metro using Dijkstra's algorithm. Processes 2024 IDFM open data for real-time visualization.",
     tags: ["Python", "Dijkstra", "NumPy", "Pandas", "Matplotlib"],
+    link: "#",
   },
 ];
 
@@ -47,9 +49,10 @@ const Projects = () => {
         <StaggerContainer className="grid md:grid-cols-2 gap-6" staggerDelay={0.2}>
           {projects.map((project) => (
             <StaggerItem key={project.title}>
+              <a href={project.link} target="_blank" rel="noopener noreferrer">
               <motion.div
                 whileHover={{ y: -8, transition: { duration: 0.3 } }}
-                className={`group bento-card bg-gradient-to-br ${project.color} cursor-pointer`}
+                className={`group bento-card bg-gradient-to-br ${project.color} cursor-pointer h-full`}
               >
                 <div className="flex items-center justify-between mb-6">
                   <FolderGit2 className={`w-10 h-10 ${project.accentColor}`} />
@@ -74,6 +77,7 @@ const Projects = () => {
                   ))}
                 </div>
               </motion.div>
+              </a>
             </StaggerItem>
           ))}
         </StaggerContainer>
