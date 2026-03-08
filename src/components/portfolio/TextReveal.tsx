@@ -21,7 +21,7 @@ export const WordReveal = ({
       className={`inline-flex flex-wrap ${className}`}
     >
       {words.map((word, i) => (
-        <span key={i} className="overflow-hidden inline-block mr-[0.3em]">
+        <span key={i} className="overflow-hidden inline-block mr-[0.3em] pb-[0.15em] -mb-[0.15em]">
           <motion.span
             className="inline-block"
             variants={{
