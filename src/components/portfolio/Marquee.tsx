@@ -1,5 +1,3 @@
-import { motion } from "framer-motion";
-
 const Marquee = () => {
   const items = [
     { text: "SOFTWARE ENGINEER", color: "text-coral" },
@@ -14,19 +12,21 @@ const Marquee = () => {
     { text: "AGILE / SCRUM", color: "text-sky" },
   ];
 
-  const doubled = [...items, ...items];
+  const renderSet = (keyPrefix: string) =>
+    items.map((item, i) => (
+      <span key={`${keyPrefix}-${i}`} className="flex items-center mx-6 shrink-0">
+        <span className={`font-display font-extrabold text-3xl md:text-4xl tracking-wide ${item.color}`}>
+          {item.text}
+        </span>
+        <span className="mx-6 text-foreground/20 text-2xl">✦</span>
+      </span>
+    ));
 
   return (
     <div className="py-8 overflow-hidden border-y-2 border-foreground/5">
-      <div className="animate-marquee flex whitespace-nowrap">
-        {doubled.map((item, i) => (
-          <span key={i} className="flex items-center mx-6 shrink-0">
-            <span className={`font-display font-extrabold text-2xl md:text-3xl ${item.color}`}>
-              {item.text}
-            </span>
-            <span className="mx-6 text-foreground/20 text-2xl">✦</span>
-          </span>
-        ))}
+      <div className="animate-marquee flex whitespace-nowrap w-fit">
+        {renderSet("a")}
+        {renderSet("b")}
       </div>
     </div>
   );

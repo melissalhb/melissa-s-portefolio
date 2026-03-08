@@ -12,8 +12,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ["Syne", "sans-serif"],
-        body: ["Syne", "sans-serif"],
+        display: ["Bebas Neue", "sans-serif"],
+        body: ["Outfit", "sans-serif"],
         mono: ["Space Mono", "monospace"],
       },
       colors: {
