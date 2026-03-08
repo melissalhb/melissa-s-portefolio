@@ -1,9 +1,5 @@
-import { useRef, useEffect } from "react";
+import { motion } from "framer-motion";
 import { ArrowUpRight, FolderGit2 } from "lucide-react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const projects = [
   {
@@ -29,40 +25,14 @@ const projects = [
 ];
 
 const Projects = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const headingRef = useRef<HTMLDivElement>(null);
-  const cardsRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        headingRef.current,
-        { y: 60, opacity: 0 },
-        {
-          y: 0, opacity: 1, duration: 0.8, ease: "power3.out",
-          scrollTrigger: { trigger: headingRef.current, start: "top 85%" },
-        }
-      );
-
-      if (cardsRef.current) {
-        const cards = cardsRef.current.children;
-        gsap.fromTo(
-          cards,
-          { y: 80, opacity: 0, rotateY: 15 },
-          {
-            y: 0, opacity: 1, rotateY: 0, duration: 0.8, stagger: 0.2, ease: "power3.out",
-            scrollTrigger: { trigger: cardsRef.current, start: "top 80%" },
-          }
-        );
-      }
-    }, sectionRef);
-    return () => ctx.revert();
-  }, []);
-
   return (
-    <section id="projects" className="py-24" ref={sectionRef}>
+    <section id="projects" className="py-24">
       <div className="section-container">
-        <div ref={headingRef}>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
           <span className="font-mono text-sm text-mint font-bold tracking-widest uppercase">(03)</span>
           <h2 className="font-display text-4xl md:text-5xl font-extrabold mt-2 mb-4">
             Selected Works<span className="text-sunny">/</span>
@@ -70,12 +40,16 @@ const Projects = () => {
           <p className="text-muted-foreground max-w-xl mb-12">
             Thoughtfully crafted projects that blend utility and aesthetics.
           </p>
-        </div>
+        </motion.div>
 
-        <div ref={cardsRef} className="grid md:grid-cols-2 gap-6" style={{ perspective: "1000px" }}>
-          {projects.map((project) => (
-            <div
+        <div className="grid md:grid-cols-2 gap-6">
+          {projects.map((project, i) => (
+            <motion.div
               key={project.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.15 }}
               className={`group bento-card bg-gradient-to-br ${project.color} cursor-pointer`}
             >
               <div className="flex items-center justify-between mb-6">
@@ -85,9 +59,12 @@ const Projects = () => {
                   <ArrowUpRight className="w-5 h-5 text-muted-foreground group-hover:text-foreground group-hover:-translate-y-1 group-hover:translate-x-1 transition-all" />
                 </div>
               </div>
+
               <h3 className="font-display font-extrabold text-2xl mb-1">{project.title}</h3>
               <p className={`font-mono text-sm ${project.accentColor} mb-3`}>{project.subtitle}</p>
-              <p className="text-muted-foreground text-sm leading-relaxed mb-6">{project.description}</p>
+              <p className="text-muted-foreground text-sm leading-relaxed mb-6">
+                {project.description}
+              </p>
               <div className="flex flex-wrap gap-2">
                 {project.tags.map((tag) => (
                   <span
@@ -98,7 +75,7 @@ const Projects = () => {
                   </span>
                 ))}
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

@@ -1,8 +1,4 @@
-import { useRef, useEffect } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import { motion } from "framer-motion";
 
 const skillCategories = [
   {
@@ -36,42 +32,14 @@ const skillCategories = [
 ];
 
 const Skills = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const headingRef = useRef<HTMLDivElement>(null);
-  const cardsRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      // Heading reveal
-      gsap.fromTo(
-        headingRef.current,
-        { y: 60, opacity: 0 },
-        {
-          y: 0, opacity: 1, duration: 0.8, ease: "power3.out",
-          scrollTrigger: { trigger: headingRef.current, start: "top 85%" },
-        }
-      );
-
-      // Cards stagger
-      if (cardsRef.current) {
-        const cards = cardsRef.current.children;
-        gsap.fromTo(
-          cards,
-          { y: 80, opacity: 0, scale: 0.9 },
-          {
-            y: 0, opacity: 1, scale: 1, duration: 0.6, stagger: 0.12, ease: "back.out(1.4)",
-            scrollTrigger: { trigger: cardsRef.current, start: "top 80%" },
-          }
-        );
-      }
-    }, sectionRef);
-    return () => ctx.revert();
-  }, []);
-
   return (
-    <section id="skills" className="py-24 relative" ref={sectionRef}>
+    <section id="skills" className="py-24 relative">
       <div className="section-container">
-        <div ref={headingRef}>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
           <span className="font-mono text-sm text-coral font-bold tracking-widest uppercase">(01)</span>
           <h2 className="font-display text-4xl md:text-5xl font-extrabold mt-2 mb-4">
             What I Do<span className="text-lavender">/</span>
@@ -79,12 +47,16 @@ const Skills = () => {
           <p className="text-muted-foreground max-w-xl mb-12">
             Specialized in C#/.NET and full-stack web development with a passion for scalable architecture and clean code.
           </p>
-        </div>
+        </motion.div>
 
-        <div ref={cardsRef} className="grid sm:grid-cols-2 gap-5">
-          {skillCategories.map((cat) => (
-            <div
+        <div className="grid sm:grid-cols-2 gap-5">
+          {skillCategories.map((cat, i) => (
+            <motion.div
               key={cat.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
               className={`bento-card border-2 ${cat.color}`}
             >
               <div className="text-3xl mb-3">{cat.emoji}</div>
@@ -99,7 +71,7 @@ const Skills = () => {
                   </span>
                 ))}
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

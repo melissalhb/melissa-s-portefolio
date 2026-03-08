@@ -1,37 +1,19 @@
-import { useRef, useEffect } from "react";
+import { motion } from "framer-motion";
 import { Mail, Linkedin, Github, Heart, ArrowUpRight, MapPin } from "lucide-react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const Contact = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
-  const blob1 = useRef<HTMLDivElement>(null);
-  const blob2 = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo(contentRef.current, { y: 80, opacity: 0 }, {
-        y: 0, opacity: 1, duration: 1, ease: "power3.out",
-        scrollTrigger: { trigger: contentRef.current, start: "top 85%" },
-      });
-
-      // Floating blobs
-      gsap.to(blob1.current, { y: -25, x: 15, duration: 4, repeat: -1, yoyo: true, ease: "sine.inOut" });
-      gsap.to(blob2.current, { y: 20, x: -20, duration: 5, repeat: -1, yoyo: true, ease: "sine.inOut" });
-    }, sectionRef);
-    return () => ctx.revert();
-  }, []);
-
   return (
-    <section id="contact" className="py-24 relative overflow-hidden" ref={sectionRef}>
-      <div ref={blob1} className="color-blob w-[400px] h-[400px] bg-coral bottom-0 right-0" />
-      <div ref={blob2} className="color-blob w-[300px] h-[300px] bg-lavender top-0 left-20" />
+    <section id="contact" className="py-24 relative overflow-hidden">
+      {/* Color blobs */}
+      <div className="color-blob w-[400px] h-[400px] bg-coral bottom-0 right-0" />
+      <div className="color-blob w-[300px] h-[300px] bg-lavender top-0 left-20" />
 
       <div className="section-container relative z-10 text-center">
-        <div ref={contentRef}>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
           <span className="font-mono text-sm text-sky font-bold tracking-widest uppercase">(05)</span>
           <h2 className="font-display text-5xl md:text-6xl lg:text-7xl font-extrabold mt-2 mb-6">
             Let's work
@@ -74,7 +56,7 @@ const Contact = () => {
               <Github className="w-6 h-6" />
             </a>
           </div>
-        </div>
+        </motion.div>
 
         <div className="mt-20 pt-8 border-t border-foreground/5">
           <p className="text-muted-foreground text-xs flex items-center justify-center gap-1 font-mono">
