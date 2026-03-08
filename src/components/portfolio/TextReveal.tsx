@@ -21,7 +21,7 @@ export const WordReveal = ({
       className={`inline-flex flex-wrap ${className}`}
     >
       {words.map((word, i) => (
-        <span key={i} className="overflow-hidden inline-block mr-[0.3em]">
+        <span key={i} className="overflow-hidden inline-block mr-[0.3em] pb-[0.15em] -mb-[0.15em]">
           <motion.span
             className="inline-block"
             variants={{
@@ -65,7 +65,7 @@ export const CharReveal = ({
       className={`inline-block ${className}`}
     >
       {chars.map((char, i) => (
-        <span key={i} className="overflow-hidden inline-block">
+        <span key={i} className="overflow-hidden inline-block pb-[0.15em] -mb-[0.15em]">
           <motion.span
             className="inline-block"
             variants={{
@@ -101,7 +101,7 @@ export const LineReveal = ({
   delay?: number;
   direction?: "up" | "left";
 }) => (
-  <div className={`overflow-hidden ${className}`}>
+  <div className={`overflow-hidden pb-[0.15em] -mb-[0.15em] ${className}`}>
     <motion.div
       initial={{ y: direction === "up" ? "100%" : 0, x: direction === "left" ? "-100%" : 0, opacity: 0 }}
       whileInView={{ y: 0, x: 0, opacity: 1 }}
