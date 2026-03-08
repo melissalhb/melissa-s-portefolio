@@ -22,10 +22,13 @@ const Navbar = () => {
   });
 
   useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 50);
+    const handler = () => {
+      setScrolled(window.scrollY > 50);
+      if (mobileOpen) setMobileOpen(false);
+    };
     window.addEventListener("scroll", handler);
     return () => window.removeEventListener("scroll", handler);
-  }, []);
+  }, [mobileOpen]);
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", dark);

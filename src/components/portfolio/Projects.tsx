@@ -77,6 +77,7 @@ const Projects = () => {
                   ))}
                 </div>
               </motion.div>
+              </a>
             </StaggerItem>
           ))}
         </StaggerContainer>

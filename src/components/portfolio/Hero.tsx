@@ -85,6 +85,16 @@ const Hero = () => {
             </MagneticButton>
             <MagneticButton>
               <a
+                href="/resume.pdf"
+                download
+                className="inline-flex items-center gap-2 border-2 border-foreground/15 text-foreground px-6 py-3.5 rounded-full font-bold text-sm hover:border-coral hover:bg-coral/10 hover:scale-105 transition-all"
+              >
+                <Download className="w-4 h-4" />
+                Resume
+              </a>
+            </MagneticButton>
+            <MagneticButton>
+              <a
                 href="https://www.linkedin.com/in/melissa/"
                 target="_blank"
                 rel="noopener noreferrer"
