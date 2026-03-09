@@ -95,7 +95,7 @@ const Hero = () => {
             </MagneticButton>
             <MagneticButton>
               <a
-                href="https://www.linkedin.com/in/melissa/"
+                href="https://www.linkedin.com/in/melissa-lacheb/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center w-12 h-12 rounded-full border-2 border-foreground/10 hover:border-lavender hover:bg-lavender/10 transition-all text-foreground"
@@ -105,7 +105,7 @@ const Hero = () => {
             </MagneticButton>
             <MagneticButton>
               <a
-                href="https://github.com/yourgithub"
+                href="https://github.com/melissalhb"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center w-12 h-12 rounded-full border-2 border-foreground/10 hover:border-coral hover:bg-coral/10 transition-all text-foreground"
