@@ -75,7 +75,7 @@ const Hero = () => {
           >
             <MagneticButton>
               <a
-                href="mailto:melissa@efrei.net"
+                href="mailto:melissa.lacheb@efrei.net"
                 className="inline-flex items-center gap-2 bg-foreground text-background px-6 py-3.5 rounded-full font-bold text-sm hover:scale-105 transition-transform"
               >
                 <Mail className="w-4 h-4" />
